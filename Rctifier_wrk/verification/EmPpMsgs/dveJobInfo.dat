@@ -1,0 +1,5 @@
+jobName=EmPpMsgs
+jobType=emprep
+designName=2024_07_28_lib:Step5:layout
+ruleFilePath=
+addInfo="EM preprocessor messages displayed as DRC errors"

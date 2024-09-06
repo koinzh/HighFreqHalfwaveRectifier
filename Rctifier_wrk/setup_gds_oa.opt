@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<AdsTranslatorSetupFile Version="1.0">
+    <Import>
+        <Layers />
+        <MapFileType>0</MapFileType>
+    </Import>
+    <Export>
+        <Layers />
+        <MapFileType>0</MapFileType>
+        <Flatten>0</Flatten>
+        <FlattenComponent>0</FlattenComponent>
+        <RectAsBox>0</RectAsBox>
+        <MaxPolygonVertices>8191</MaxPolygonVertices>
+        <EntireHierarchy>1</EntireHierarchy>
+        <TranslationDepth>20</TranslationDepth>
+        <CharLimit>1</CharLimit>
+        <ExportAnnotations>0</ExportAnnotations>
+        <IgnoreDataTypeProperty>0</IgnoreDataTypeProperty>
+        <MapFilePath></MapFilePath>
+    </Export>
+</AdsTranslatorSetupFile>

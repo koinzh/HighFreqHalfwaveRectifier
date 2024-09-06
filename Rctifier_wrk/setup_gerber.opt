@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<AdsTranslatorSetupFile Version="1.0">
+    <Import>
+        <ZeroSuppression>Leading</ZeroSuppression>
+        <CoordMode>AbsoluteCMode</CoordMode>
+        <NumIntegerDigits>2</NumIntegerDigits>
+        <NumFractionalDigits>4</NumFractionalDigits>
+        <Unit>inch</Unit>
+        <Layers />
+    </Import>
+    <Export>
+        <FileFormat>RS274X</FileFormat>
+        <ZeroSuppression>Leading</ZeroSuppression>
+        <CoordMode>AbsoluteCMode</CoordMode>
+        <NumIntegerDigits>2</NumIntegerDigits>
+        <NumFractionalDigits>5</NumFractionalDigits>
+        <XOffset>0</XOffset>
+        <YOffset>0</YOffset>
+        <Scale>1</Scale>
+        <OpenLineWidth>0.025</OpenLineWidth>
+        <SingleFile>0</SingleFile>
+        <Unit>inch</Unit>
+        <Flatten>0</Flatten>
+        <PathsAsPolygons>0</PathsAsPolygons>
+        <HoleFormat>Holes As Cutlines</HoleFormat>
+        <Layers>
+            <Layer EecadLayer="bond" AdsLayer="bond:drawing" Transfer="1" />
+            <Layer EecadLayer="cond" AdsLayer="cond:drawing" Transfer="1" />
+            <Layer EecadLayer="hole" AdsLayer="hole:drawing" Transfer="1" />
+            <Layer EecadLayer="resi" AdsLayer="resi:drawing" Transfer="1" />
+            <Layer EecadLayer="symbol" AdsLayer="symbol:drawing" Transfer="1" />
+        </Layers>
+        <SingleFileFilename></SingleFileFilename>
+        <DrillLayers>
+            <Layer LayerName="cond:drawing" LayerNumber="1" DrillExport="1">
+                <DrillDiameterMap DrawDiameter="10000" ToolDiameter="10000" />
+                <DrillDiameterMap DrawDiameter="2000" ToolDiameter="2000" />
+                <DrillDiameterMap DrawDiameter="20000" ToolDiameter="20000" />
+            </Layer>
+            <Layer LayerName="hole:drawing" LayerNumber="5" DrillExport="1">
+                <DrillDiameterMap DrawDiameter="10000" ToolDiameter="10000" />
+                <DrillDiameterMap DrawDiameter="2000" ToolDiameter="2000" />
+                <DrillDiameterMap DrawDiameter="20000" ToolDiameter="20000" />
+            </Layer>
+        </DrillLayers>
+        <AutoMerge>0</AutoMerge>
+        <ImportNegativeLayerAsSlotLayer>0</ImportNegativeLayerAsSlotLayer>
+        <CreateComponentsInFolder>1</CreateComponentsInFolder>
+        <SelectedDesignName></SelectedDesignName>
+        <VectorizeText>1</VectorizeText>
+        <LayerStackup>1</LayerStackup>
+        <Polarity>
+            <Layer EecadLayer="bond:drawing" Polarity="Positive" />
+            <Layer EecadLayer="cond:drawing" Polarity="Positive" />
+            <Layer EecadLayer="hole:drawing" Polarity="Positive" />
+            <Layer EecadLayer="resi:drawing" Polarity="Positive" />
+            <Layer EecadLayer="symbol:drawing" Polarity="Positive" />
+        </Polarity>
+        <Nets />
+        <Components />
+    </Export>
+</AdsTranslatorSetupFile>

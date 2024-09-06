@@ -1,0 +1,6 @@
+INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
+INCLUDE $HPEESOF_DIR/oalibs/dsp.defs
+INCLUDE ../HFDiode_vendor_kit/lib.defs
+INCLUDE ../murata_lib_ads_s_2202e/muRataLibWeb_EIA/lib.defs
+DEFINE 2024_07_28_lib 2024_07_28_lib
+ASSIGN 2024_07_28_lib libMode shared

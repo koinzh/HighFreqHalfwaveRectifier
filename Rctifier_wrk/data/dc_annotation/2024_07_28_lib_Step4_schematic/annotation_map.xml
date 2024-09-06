@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annotation_files Version="1.0" Simulator="hpeesofsim" Time="周一 7月 29 16:20:27 2024">
+ <File name="annotation_1.xml">
+  <Controller name="HB2">
+   <P>RF: 5.9999999999999998e-01</P>
+  </Controller>
+ </File>
+</annotation_files>

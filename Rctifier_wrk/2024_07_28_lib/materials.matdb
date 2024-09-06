@@ -1,0 +1,10 @@
+<!DOCTYPE Materials>
+<Materials>
+    <Conductors/>
+    <Dielectrics>
+        <Dielectric er_imag="" mur_real="1" name="Alumina" valuefreq="1 GHz" mur_imag="" loss_type="1" lowfreq="1 KHz" er_loss="" er_real="9.6" highfreq="1 THz"/>
+        <Dielectric er_imag="" mur_real="1" name="FR4" valuefreq="1 GHz" mur_imag="" loss_type="1" lowfreq="1 KHz" er_loss="0.02" er_real="4.4" highfreq="1 THz"/>
+    </Dielectrics>
+    <Semiconductors/>
+    <roughness/>
+</Materials>

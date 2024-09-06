@@ -1,0 +1,288 @@
+; Top Design: "2024_07_28_lib:Step4_v1:schematic"
+; Netlisted using Hierarchy Policy: "Standard"
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="2024_07_28_lib:Step4_v1:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+; Library Name: 2024_07_28_lib
+; Cell Name: SMS7630_1
+; View Name: schematic
+define SMS7630_1 ( P1  P2 ) 
+;parameters 
+"DIODEM1":DIODE1  N__2 P2 Mode=1 Noise=yes 
+model DIODEM1 Diode Is=5e-6 A Rs=30 Ohm N=1.05 Tt=1e-11 sec Cjo=1.4e-13 F Vj=0.34 V M=0.4 Fc=0.5 Isr=0 A Nr=2 Bv=2 V Ibv=1e-4 A Nbv=1 Ibvl=0 A Nbvl=1 Ffe=1 AllowScaling=0 Xti=2 Eg=0.69 
+L:L1  P1 N__2 L=0.7 nH Noise=yes  
+C:C1  N__2 P2 C=0.07 pF 
+end SMS7630_1
+
+MLIN2:TL21  N__33 N__12 Subst="MSub1" W=1.25 mm tune{ 0.3 mm to 1.5 mm by 0.06 mm } L=1 mm tune{ 24.25 mm to 72.75 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+GCM21_T:C8  N__33 N__32 PartNumber=9 
+MLIN2:TL20  N__14 N__28 Subst="MSub1" W=1.25 mm L=1 mm tune{ 24.25 mm to 72.75 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MLIN2:TL1  N__7 N__15 Subst="MSub1" W=0.6 mm tune{ 0.3 mm to 1.5 mm by 0.06 mm } L=4 mm tune{ 24.25 mm to 72.75 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MLIN2:TL2  N__18 N__9 Subst="MSub1" W=0.6 mm L=7.8 mm tune{ 0 mm to 14.7975 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MTAPER:Taper1  N__8 N__7 Subst="MSub1" W1=3.01 mm W2=0.6 mm L=1.5 mm 
+MLIN2:TL16  N__35 N__8 Subst="MSub1" W=3.01 mm tune{ 0.3 mm to 1.5 mm by 0.06 mm } L=1 mm tune{ 24.25 mm to 72.75 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MLIN2:TL5  N__25 N__4 Subst="MSub1" W=0.6 mm L=2.4 mm Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MTEE_ADS:Tee1  N__22 N__20 N__19 Subst="MSub1" W1=0.6 mm W2=0.6 mm W3=0.6 mm 
+MLIN2:TL6  N__20 N__21 Subst="MSub1" W=0.6 mm L=1.75 mm tune{ 1.75 mm to 5.25 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MLIN2:TL7  N__4 N__22 Subst="MSub1" W=0.6 mm L=2.7 mm tune{ 1 mm to 10 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+Short:I_Probe1  N__21 Vout Mode=0 SaveCurrent=yes 
+R:R1  N__24 N__14 R=R Ohm Noise=yes 
+MLIN2:TL9  N__3 N__18 Subst="MSub1" W=0.6 mm L=1.5 mm Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MLIN2:TL10  N__19 N__11 Subst="MSub1" W=0.6 mm L=0.5 mm Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MTEE_ADS:Tee2  N__15 N__6 N__5 Subst="MSub1" W1=0.6 mm W2=0.6 mm W3=0.6 mm 
+VIAGND:V1  N__9 Subst="MSub1" D=0.2 mm T=0.035 mm Rho=1.0 W=0.6 mm 
+VIAGND:V2  N__12 Subst="MSub1" D=1 mm T=0.035 mm Rho=1.0 W=1.25 mm 
+VIAGND:V3  N__28 Subst="MSub1" D=1 mm T=0.035 mm Rho=1.0 W=1.25 mm 
+aele Zin1=zin(S11,PortZ1);
+HB:HB2 MaxOrder=4 Freq[1]=RF GHz Order[1]=3 StatusLevel=2 HBSS_WSP=0 OutputPlan="HB2_Output" 
+
+OutputPlan:HB2_Output \
+      Type="Output" \
+      UseNodeNestLevel=yes \
+      NodeNestLevel=2 \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2 \
+      UseDeviceCurrentNestLevel=no \
+      DeviceCurrentNestLevel=0 \
+      DeviceCurrentDeviceType="All" \
+      DeviceCurrentSymSyntax=yes \
+      UseCurrentNestLevel=yes \
+      CurrentNestLevel=999 \
+      UseDeviceVoltageNestLevel=no \
+      DeviceVoltageNestLevel=0 \
+      DeviceVoltageDeviceType="All"
+
+Tran:HB2_tran HB_Sol=1 SteadyState=1 StatusLevel=3 \
+Freq[1]=RF GHz Order[1]=3 
+
+Component:tahb_HB2 Module="ATAHB" Type="ModelExtractor" \ 
+ Tran_Analysis="HB2_tran" HB_Analysis="HB2" 
+
+
+RF=0.9
+R=530 tune{ 20 to 2400 by 10 }
+P_input=10 tune{ 1 to 30 by 0.1 }
+model MSub1 MSUB H=1.6 mm Er=4.4 Mur=1 Cond=1.0E+50 Hu=1.0e+033 mm T=0.035 mm TanD=0.02 Rough=0 mm DielectricLossModel=1 FreqForEpsrTanD=1.0 GHz LowFreqForTanD=1.0 kHz HighFreqForTanD=1.0 THz RoughnessModel=2 
+ParamSweep:Sweep1 SimInstanceName[1]="HB2" StatusLevel=2 SweepVar="RF" SweepPlan="Sweep1_stim" 
+
+SweepPlan: Sweep1_stim Start=0.6 Stop=1.4 Step=0.01 
+
+ParamSweep:Sweep2 SimInstanceName[1]="HB2" StatusLevel=2 SweepVar="P_input" SweepPlan="Sweep2_stim" 
+
+SweepPlan: Sweep2_stim Start=-20 Stop=20 Step=0.5 
+
+ParamSweep:Sweep3 SimInstanceName[1]="HB2" StatusLevel=2 SweepVar="R" SweepPlan="Sweep3_stim" 
+
+SweepPlan: Sweep3_stim Start=400 Stop=1800 Step=100 Lin=46 
+
+HB:HB1 MaxOrder=4 Freq[1]=RF GHz Order[1]=3 StatusLevel=2 CalcS_Params=yes LSSP_FreqAtPort[1]=RF GHz SweepVar="RF" SweepPlan="HB1_stim" OutputPlan="HB1_Output" 
+
+SweepPlan: HB1_stim Start=0.6 Stop=1.4 Step=0.01 
+
+OutputPlan:HB1_Output \
+      Type="Output" \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2
+
+aele Eff=Pout/Pin*100;Pin=1000*dbmtow(P_input);Pout=1000*mag(I_Probe1.i[0]*Vout[0]);
+
+#ifndef muRataLibWeb
+#define muRataLibWeb
+; models
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/ZRB18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/ZRB15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/ZRA21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW43FT_0H.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW32FT_0H.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW2UAS_0C.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW2UAS_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW2BAS_0C.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW2BAS_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW2BAN_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW21HN_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW21FT_0H.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18CN_0Z.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18CN_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18CA_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18AS_0Z.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18AS_0C.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18AS_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18AN_8Z.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18AN_80.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18AN_1Z.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18AN_10.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18AN_0Z.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW18AN_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15DN_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15CN_1Z.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15CN_10.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15CN_0Z.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15CN_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15CE_10.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15CA_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15AW_80.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15AN_8Z.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15AN_80.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15AN_1Z.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15AN_10.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15AN_0Z.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW15AN_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW04CA_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW04AN_20.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW04AN_10.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW04AN_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQW03AW_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQP15MN_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQP03TQ_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQP03TN_Z2.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQP03TN_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQP03TG_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQP03PN_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQP03HQ_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQP02TQ_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQP02TN_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQP02HQ_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQG18HN_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQG18HH_00.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQG15WZ_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQG15WH_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQG15HZ_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQG15HS_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQG15HN_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LQG15HH_02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LLR18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LLL31.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LLL21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LLL1U.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LLL18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LLL15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/LLC15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/KRM55.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/KRM31.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/KRM21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/KR355.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/KCM55.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/KCA55.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/KC355.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GXT32.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GXT31.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GXT21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GXT18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GXT15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRT32.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRT31.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRT21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRT18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRT15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRT03.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRMMD.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRMJN.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM55.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM43.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM42.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM32.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM31.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM03.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRM01.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRJ55.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRJ43.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRJ32.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRJ31.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRJ21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRJ18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRJ15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GRJ03.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR731.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR721.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR455.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR443.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR442.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR432.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR431.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR355.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR343.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR332.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR331.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GR321.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GQM22.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GQM21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GQM18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GQM15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GJM15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GJM03.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GJM02.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GJ832.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GJ831.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GJ821.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GJ431.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GGM32.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GGM31.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GGM21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GGM18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GGM15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GGD21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GGD18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCQ15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCM55.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCM43.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCM32.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCM31.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCM21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCM18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCM15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCM03.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCJ55.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCJ43.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCJ32.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCJ31.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCJ21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCJ18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCH32.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCH31.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCH21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCH18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCH15.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCH03.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCE21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCE18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCD21.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GCD18.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GC355.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GC343.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GC332.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GC331.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GC321.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GA355.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GA352.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GA343.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GA342.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GA255.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GA243.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/GA242.net"
+#include "C:/Users/zxy/ADS/murata_lib_ads_s_2202e/muRataLibWeb_EIA/circuit/models/encode.net"
+#endif
+
+
+SMS7630_1:I__32  N__42 N__25 
+MLIN2:TL23  N__5 N__27 Subst="MSub1" W=0.6 mm L=1.5 mm Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MLIN2:TL18  Vin N__40 Subst="MSub1" W=3.01 mm tune{ 0.3 mm to 1.5 mm by 0.06 mm } L=1 mm tune{ 24.25 mm to 72.75 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MLIN2:TL19  N__24 N__23 Subst="MSub1" W=1.25 mm L=1 mm tune{ 24.25 mm to 72.75 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MTAPER:Taper4  N__23 Vout Subst="MSub1" W1=1.25 mm W2=0.6 mm L=1 mm 
+MLIN2:TL22  N__32 N__10 Subst="MSub1" W=1.25 mm tune{ 0.3 mm to 1.5 mm by 0.06 mm } L=1 mm tune{ 24.25 mm to 72.75 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MTAPER:Taper7  N__10 N__11 Subst="MSub1" W1=1.25 mm W2=0.6 mm L=1 mm 
+GCM21_T:C7  N__35 Vin PartNumber=60 
+MLIN2:TL27  N__37 N__16 Subst="MSub1" W=3.01 mm L=29.1 mm tune{ 0 mm to 14.7975 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+SMS7630_1:I__48  N__3 N__27 
+VIAGND:V4  N__16 Subst="MSub1" D=2 mm T=0.035 mm Rho=1.0 W=3.01 mm 
+Port:PORT1  N__2 0 Num=1 Z=50 Ohm P[1]=polar(dbmtow(P_input),0) Freq[1]=RF GHz    Noise=yes Pac=polar(dbmtow(0),0) 
+MLIN2:TL3  N__2 N__39 Subst="MSub1" W=3.01 mm L=1 mm Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MLIN2:TL24  N__41 N__40 Subst="MSub1" W=3.01 mm L=21.3 mm tune{ 11.75 mm to 35.25 mm by 0.1 mm } Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
+MTEE_ADS:Tee3  N__39 N__41 N__37 Subst="MSub1" W1=3.01 mm W2=3.01 mm W3=3.01 mm 
+MLIN2:TL26  N__42 N__6 Subst="MSub1" W=0.6 mm L=1.5 mm Wall1=2.5e+028 mm Wall2=2.5e+028 mm Mod=1 
